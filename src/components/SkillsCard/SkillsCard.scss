@@ -1,0 +1,10 @@
+.skill-card{
+  >p{
+    margin-top:5%;
+    font-size:calc(12pt + 0.5vh) !important;
+    text-align: center;
+  }
+  >img{
+    width:calc(100% + 0.5vw);
+  }
+}

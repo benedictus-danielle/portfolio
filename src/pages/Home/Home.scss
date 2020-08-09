@@ -1,0 +1,27 @@
+.d-grid{
+  display:grid;
+  grid-template-columns: 50% 50%;
+
+  height:100%;
+  img{
+    width:35%;
+  }
+  >div{
+    margin:4% 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  div:first-child{
+    p{
+      color: #222222;
+    }
+    p:first-child{
+      font-size:40px;
+    }
+    p:nth-child(2){
+      font-size:25px;
+    }
+  }
+}

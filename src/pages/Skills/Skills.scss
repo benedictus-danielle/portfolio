@@ -1,0 +1,29 @@
+#skills{
+
+  width:100%;
+  >div{
+    margin:5% 0;
+    width:100%;
+    >div{
+      width:100%;
+      display:grid;
+      column-gap: 2%;
+      grid-template-columns: repeat(6, calc(100% / 6.65));
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #skills{
+    >div{
+      >div{
+        width:100%;
+        display:flex;
+        flex-wrap: wrap;
+        >div{
+          flex:0 1 150px;
+        }
+      }
+    }
+  }
+}
