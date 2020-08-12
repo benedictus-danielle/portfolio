@@ -1,7 +1,7 @@
 // @flow
 import "./Skills.scss";
 import SkillsCard from "../../components/SkillsCard/SkillsCard";
-import axios from 'axios'
+import {axiosInstance} from "../../instances/axiosInstance";
 
 import React, {Component} from 'react';
 import {CircularProgress} from "@material-ui/core";
@@ -38,7 +38,7 @@ export class Skills extends Component {
     }
 
     async fetchData() {
-        const promise = await axios.get('http://192.168.100.10:8000/api/portfolio/skill-detail')
+        const promise = await axiosInstance.get('/api/portfolio/skill-detail')
         const result = await promise.data
         this.setState(state => ({
             items: {

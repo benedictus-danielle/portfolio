@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import "./Creations.scss";
-import axios from 'axios'
 import {ICreation} from "../../interfaces/Interface";
 import {CreationCard} from "../../components/CreationCard/CreationCard";
+import {axiosInstance} from "../../instances/axiosInstance";
 
 class Creations extends Component<{},{creation:Array<ICreation>}> {
     state = {
         creation:[]
     }
     async fetchData(){
-        const promise = await axios.get("http://192.168.100.10:8000/api/portfolio/creations")
+        const promise = await axiosInstance.get("/api/portfolio/creations")
         this.setState({creation:promise.data})
     }
     componentDidMount() {

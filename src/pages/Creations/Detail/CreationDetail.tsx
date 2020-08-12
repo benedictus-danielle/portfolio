@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {axiosInstance} from '../../../instances/axiosInstance';
 import Carousel from "react-bootstrap/cjs/Carousel";
 import "./CreationDetail.scss";
 
@@ -39,8 +39,8 @@ class CreationDetail extends Component<{
     }
     async fetchData(){
         const promise = await Promise.all([
-            axios.get(`http://192.168.100.10:8000/api/portfolio/creations/${this.props.match.params.id}`),
-            axios.get(`http://192.168.100.10:8000/api/portfolio/creation-details?search=${this.props.match.params.id}`)
+            axiosInstance.get(`/api/portfolio/creations/${this.props.match.params.id}`),
+            axiosInstance.get(`/api/portfolio/creation-details?search=${this.props.match.params.id}`)
         ])
         const header = await promise[0].data
         const detail = await promise[1].data
