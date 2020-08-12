@@ -1,188 +1,126 @@
 // @flow
-import * as React from 'react';
 import "./Skills.scss";
 import SkillsCard from "../../components/SkillsCard/SkillsCard";
+import axios from 'axios'
 
-type Props = {
-    
-};
-type State = {
-    
-};
+import React, {Component} from 'react';
+import {CircularProgress} from "@material-ui/core";
 
-export class Skills extends React.Component<Props, State> {
+interface ISkillDetail {
+    skill_detail_id: string,
+    language: {
+        id: string,
+        name: string,
+        image: string
+    },
+    skill: {
+        id: string,
+        type: string
+    },
+    hovered: boolean
+}
+
+interface IState {
+    items: {
+        frontend: Array<ISkillDetail>,
+        backend: Array<ISkillDetail>,
+        others: Array<ISkillDetail>
+    }
+}
+
+export class Skills extends Component {
+    state: IState = {
+        items: {
+            frontend: [],
+            backend: [],
+            others: []
+        }
+    }
+
+    async fetchData() {
+        const promise = await axios.get('http://192.168.100.10:8000/api/portfolio/skill-detail')
+        const result = await promise.data
+        this.setState(state => ({
+            items: {
+                frontend: [...result.filter((value: ISkillDetail) => {
+                    return value.skill.type.toLowerCase() === "frontend"
+                })],
+                backend: [...result.filter((value: ISkillDetail) => {
+                    return value.skill.type.toLowerCase() === "backend"
+                })],
+                others: [...result.filter((value: ISkillDetail) => {
+                    return value.skill.type.toLowerCase() === "others"
+                })]
+            }
+        }))
+    }
+
+    componentDidMount() {
+        this.fetchData()
+    }
 
     render() {
-        const items = {
-            frontend:[
-                {
-                    image:"react",
-                    text:"ReactJS / ReactTS"
-                },
-                {
-                    image:"material-ui",
-                    text:"Material UI"
-                },
-                {
-                    image:"vue",
-                    text:"Vue"
-                },
-                {
-                    image:"nuxt",
-                    text:"Nuxt"
-                },
-                {
-                    image:"vuetify",
-                    text:"Vuetify"
-                },
-                {
-                    image:"html5",
-                    text:"HTML5"
-                },
-                {
-                    image:"css3",
-                    text:"CSS3"
-                },
-                {
-                    image:"sass",
-                    text:"SASS"
-                },
-                {
-                    image:"javascript",
-                    text:"JavaScript"
-                },
-                {
-                    image:"typescript",
-                    text:"TypeScript"
-                },
-                {
-                    image:"bootstrap",
-                    text:"Bootstrap"
-                },
-                {
-                    image:"jquery",
-                    text:"jQuery"
-                }
-            ],
-            backend:[
-                {
-                    image:"go",
-                    text:"Go"
-                },
-                {
-                    image:"php",
-                    text:"PHP"
-                },
-                {
-                    image:"laravel",
-                    text:"Laravel"
-                },
-                {
-                    image:"mysql",
-                    text:"MySQL"
-                },
-                {
-                    image:"mongodb",
-                    text:"MongoDB"
-                },
-                {
-                    image:"firebase",
-                    text:"Firebase"
-                },
-                {
-                    image:"mssql",
-                    text:"Microsoft SQL Server"
-                },
-                {
-                    image:"dot-net",
-                    text:"ASP.NET"
-                }
-            ],
-            others:[
-                {
-                    image:"python",
-                    text:"Python"
-                },
-                {
-                    image:"c++",
-                    text:"C/C++"
-                },
-                {
-                    image:"csharp",
-                    text:"C#"
-                },
-                {
-                    image:"java",
-                    text:"Java"
-                },
-                {
-                    image:"kotlin",
-                    text:"Kotlin"
-                },
-                {
-                    image:"android",
-                    text:"Android"
-                },
-                {
-                    image:"flutter",
-                    text:"Flutter"
-                },
-                {
-                    image:"dart",
-                    text:"Dart"
-                },
-                {
-                    image:"git",
-                    text:"Git"
-                },
-                {
-                    image:"ubuntu",
-                    text:"Ubuntu server"
-                },
-            ]
+        let contentFrontend;
+        let contentBackend;
+        let contentOthers;
+        if (this.state.items.frontend.length === 0) {
+            contentFrontend = <CircularProgress/>
+        } else {
+            contentFrontend = this.state.items.frontend.map((value, index) => {
+                return (
+                    <SkillsCard
+                        key={index}
+                        text={value.language.name}
+                        image={`frontend/${value.language.image}`}/>
+                )
+            })
+        }
+        if (this.state.items.backend.length === 0) {
+            contentBackend = <CircularProgress/>
+        } else {
+            contentBackend = this.state.items.backend.map((value, index) => {
+                return (
+                    <SkillsCard
+                        key={index}
+                        text={value.language.name}
+                        image={`backend/${value.language.image}`}/>
+
+                )
+            })
+        }
+        if (this.state.items.others.length === 0) {
+            contentOthers = <CircularProgress/>
+        } else {
+            contentOthers = this.state.items.others.map((value, index) => {
+                return (
+                    <SkillsCard
+                        key={index}
+                        text={value.language.name}
+                        image={`others/${value.language.image}`}/>
+                )
+            })
         }
         return (
             <div id="skills">
                 <div>
-                    <h3>Frontend</h3>
+                    <h3 className="text-dark">Frontend</h3>
                     <div>
-                        {items.frontend.map((value,index) => {
-                            return(
-                                <SkillsCard
-                                    key={index}
-                                    text={value.text}
-                                    image={`frontend/${value.image}`}/>
-                            )
-                        })}
+                        {contentFrontend}
                     </div>
                 </div>
                 <div>
-                    <h3>Backend</h3>
+                    <h3 className="text-dark">Backend</h3>
                     <div>
-                        {items.backend.map((value,index) => {
-                            return(
-                                <SkillsCard
-                                    key={index}
-                                    text={value.text}
-                                    image={`backend/${value.image}`}/>
-                            )
-                        })}
+                        {contentBackend}
                     </div>
                 </div>
                 <div>
-                    <h3>Others</h3>
+                    <h3 className="text-dark">Others</h3>
                     <div>
-                        {items.others.map((value,index) => {
-                            return(
-                                <SkillsCard
-                                    key={index}
-                                    text={value.text}
-                                    image={`others/${value.image}`}/>
-                            )
-                        })}
+                        {contentOthers}
                     </div>
                 </div>
             </div>
         );
-    };
-};
+    }
+}

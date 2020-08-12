@@ -1,17 +1,22 @@
+$theme-colors:(
+  "light":#424242,
+  "secondary":lighten(#444444,4),
+  "dark":#FFFFFF
+);
+
 @import "~bootstrap/scss/bootstrap";
+
 :root{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
 
 #root{
-  height:100vh;
-}
-#content{
-  padding:0 3%;
+  height:fit-content;
 }
 
 .App{
   display:grid;
   grid-template-rows: auto 1fr auto;
-  min-height:100%;
+  row-gap: 3vh;
+  min-height: 100vh;
 }

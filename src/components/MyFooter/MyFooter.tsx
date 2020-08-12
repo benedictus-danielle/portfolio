@@ -19,8 +19,20 @@ export class MyFooter extends React.Component<Props, State> {
                     <a href="https://www.linkedin.com/in/benedictus-danielle-b8144b178/"><LinkedInIcon/></a>
                     <a href="https://github.com/benedictus-danielle"><GithubIcon/></a>
                 </div>
-                <div>
-                    Copyright &copy; {"2020" + (new Date().getFullYear() !== 2020 ? `- ${new Date().getFullYear()}` : "")} Benedictus Danielle
+                <div className="text-dark">
+                    <div>
+                        This web is made using <a href="https://reactjs.org/">React</a> & <a href="https://www.djangoproject.com/">Django</a>
+                    </div>
+                    <div>
+                        Icons from <a href="https://simpleicons.org/">Simple Icons</a>
+                    </div>
+                    <div>
+                        Animation were made using <a href="https://material-ui.com/">Material-UI</a>
+                    </div>
+                    <div>
+                        Copyright &copy; {"2020" + (new Date().getFullYear() !== 2020 ? `- ${new Date().getFullYear()}` : "")} Benedictus Danielle
+                    </div>
+
                 </div>
             </footer>
         );

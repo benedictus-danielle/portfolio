@@ -7,11 +7,13 @@ import {MyNavbar} from "./components/MyNavbar/MyNavbar";
 import {MyFooter} from "./components/MyFooter/MyFooter";
 import {Skills} from "./pages/Skills/Skills";
 import {Extras} from "./pages/Extras/Extras";
+import Creations from "./pages/Creations/Creations";
+import CreationDetail from "./pages/Creations/Detail/CreationDetail";
 
 function App() {
 
     return (
-        <div className="App">
+        <div className="App bg-secondary">
             <Router>
                 <MyNavbar/>
                 <main id="content" className="container-fluid">
@@ -20,11 +22,15 @@ function App() {
                         <Route path="/about" exact component={About}/>
                         <Route path="/skills" exact component={Skills}/>
                         <Route path="/extras" exact component={Extras}/>
+                        <Route path="/creations" exact component={Creations}/>
+                        <Route path="/creations/:id" exact component={CreationDetail}/>
                     </Switch>
                 </main>
                 <MyFooter/>
             </Router>
+
         </div>
+
     );
 }
 

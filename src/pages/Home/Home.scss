@@ -1,10 +1,9 @@
 .d-grid{
   display:grid;
   grid-template-columns: 50% 50%;
-
-  height:100%;
+  width:100%;
   img{
-    width:35%;
+    width:52.5%;
   }
   >div{
     margin:4% 0;
@@ -22,6 +21,21 @@
     }
     p:nth-child(2){
       font-size:25px;
+    }
+  }
+  div:nth-child(2){
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .d-grid{
+    display:flex;
+    flex-direction: column-reverse;
+    p{
+      text-align: center;
     }
   }
 }
