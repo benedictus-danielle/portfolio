@@ -21,7 +21,7 @@ export function CreationCard(props:IProps){
                         alt={props.creation.title}
                         image={`/assets/creation/${props.creation.thumbnail}`}
                         title="Click to learn more"
-                        style={{height:'50%'}}
+                        style={{height:'50%', backgroundColor:`${'white' ?? props.creation.thumbnail === '000.png'}`}}
                     />
                     <CardContent>
                         <Typography variant="h5" component="h3">
