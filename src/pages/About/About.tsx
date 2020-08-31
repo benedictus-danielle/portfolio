@@ -47,6 +47,7 @@ export class About extends React.Component<Props, State> {
                             <li>PHPStorm</li>
                             <li>GoLand</li>
                             <li>PyCharm</li>
+                            <li>Ruby Mine</li>
                             <li>NetBeans</li>
                             <li>Sublime Text 3</li>
                         </ul>

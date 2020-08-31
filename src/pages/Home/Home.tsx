@@ -18,7 +18,7 @@ export class Home extends React.Component<Props, State> {
                     <div className="text-left">
                         <div>
                             <p className="text-dark">Hi, I'm Benedictus Danielle</p>
-                            <p className="text-dark">I'm a fullstack developer looking for a first job</p>
+                            <p className="text-dark">I'm a laboratory assistant at Binus University</p>
                         </div>
                     </div>
                     <div>
