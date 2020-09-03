@@ -13,8 +13,8 @@ interface IProps{
 
 export function CreationCard(props:IProps){
     return (
-        <Link to={`/creations/${props.creation.id}`}>
-            <Card className="bg-light text-dark m-4 text-justify">
+        <Link to={`/creations/${props.creation.id}`} className="m-3">
+            <Card className="bg-light text-dark text-justify">
                 <CardActionArea>
                     <CardMedia
                         component="img"
