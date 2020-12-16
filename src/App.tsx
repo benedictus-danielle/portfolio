@@ -18,12 +18,13 @@ function App() {
                 <MyNavbar/>
                 <main id="content" className="container-fluid">
                     <Switch>
+
                         <Route path="/" exact component={Home}/>
                         <Route path="/about" exact component={About}/>
                         <Route path="/skills" exact component={Skills}/>
                         <Route path="/extras" exact component={Extras}/>
-                        <Route path="/creations" exact component={Creations}/>
                         <Route path="/creations/:id" exact component={CreationDetail}/>
+                        <Route path="/creations" exact component={Creations}/>
                     </Switch>
                 </main>
                 <MyFooter/>
