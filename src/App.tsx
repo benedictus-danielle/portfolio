@@ -19,12 +19,12 @@ function App() {
                 <main id="content" className="container-fluid">
                     <Switch>
 
-                        <Route path="/" exact component={Home}/>
-                        <Route path="/about" exact component={About}/>
-                        <Route path="/skills" exact component={Skills}/>
-                        <Route path="/extras" exact component={Extras}/>
-                        <Route path="/creations/:id" exact component={CreationDetail}/>
-                        <Route path="/creations" exact component={Creations}/>
+                        <Route strict={false} path="/" exact component={Home}/>
+                        <Route strict={false} path="/about" exact component={About}/>
+                        <Route strict={false} path="/skills" exact component={Skills}/>
+                        <Route strict={false} path="/extras" exact component={Extras}/>
+                        <Route strict={false} path="/creations/:id" exact component={CreationDetail}/>
+                        <Route strict={false} path="/creations" exact component={Creations}/>
                     </Switch>
                 </main>
                 <MyFooter/>
