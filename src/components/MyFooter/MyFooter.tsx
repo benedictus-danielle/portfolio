@@ -30,7 +30,7 @@ export class MyFooter extends React.Component<Props, State> {
                         Animation were made using <a href="https://material-ui.com/">Material-UI</a>
                     </div>
                     <div>
-                        Copyright &copy; {"2020" + (new Date().getFullYear() !== 2020 ? `- ${new Date().getFullYear()}` : "")} Benedictus Danielle
+                        Copyright &copy; {"2020" + (` - ${new Date().getFullYear()}` ?? new Date().getFullYear() !== 2020)} Benedictus Danielle
                     </div>
 
                 </div>
